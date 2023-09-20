@@ -1,0 +1,12 @@
+git:latest
+workflow-aggregator:latest
+docker-workflow:latest
+workflow-cps-global-lib:latest
+mailer:latest
+timestamper:latest
+ssh-slaves:latest
+matrix-auth:latest
+github-branch-source:latest
+credentials-binding:latest
+maven-plugin:latest
+pipeline-maven:latest

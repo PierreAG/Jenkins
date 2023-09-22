@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+    <!-- Other job configuration settings -->
+
+    <properties>
+        <hudson.model.ParametersDefinitionProperty>
+            <parameterDefinitions>
+                <hudson.model.StringParameterDefinition>
+                    <name>GITHUB_PROJECT_URL</name>
+                    <description>GitHub Project URL</description>
+                    <defaultValue>https://github.com/PierreAG/SimpleRestApi.git</defaultValue>
+                </hudson.model.StringParameterDefinition>
+            </parameterDefinitions>
+        </hudson.model.ParametersDefinitionProperty>
+    </properties>
+
+    <!-- Poll SCM Trigger -->
+    <triggers>
+        <hudson.triggers.SCMTrigger>
+            <spec>* * * * *</spec> <!-- This schedules polling every minute -->
+        </hudson.triggers.SCMTrigger>
+    </triggers>
+
+    <!-- SCM (Source Code Management) configuration -->
+    <scm class="hudson.plugins.git.GitSCM">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+            <hudson.plugins.git.UserRemoteConfig>
+                <url>https://github.com/PierreAG/SimpleRestApi.git</url> <!-- Repository URL -->
+            </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+            <hudson.plugins.git.BranchSpec>
+                <name>*/main</name> <!-- Poll the 'main' branch (or any desired branch) -->
+            </hudson.plugins.git.BranchSpec>
+        </branches>
+        <!-- Additional Git SCM configuration settings -->
+        <extensions/>
+    </scm>
+
+    <!-- Maven Build Configuration -->
+    <builders>
+        <hudson.tasks.Maven>
+            <targets>clean install</targets>
+            <mavenName>maven</mavenName>
+            <usePrivateRepository>false</usePrivateRepository>
+        </hudson.tasks.Maven>
+    </builders>
+
+    <!-- Other job configuration settings -->
+</project>

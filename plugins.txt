@@ -8,5 +8,4 @@ ssh-slaves:latest
 matrix-auth:latest
 github-branch-source:latest
 credentials-binding:latest
-maven-plugin:latest
 pipeline-maven:latest
